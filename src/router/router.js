@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../templates/user');
 
 router.post('/register', function(req, res, next) {
-  const { email, password } = req.body;
+  const { name,surname,email, password } = req.body;
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
     return res.status(400).json({ message: 'Email and password are required' });
   }
 
-  User.create({ email, password })
+  User.create({ name,surname,email, password })
     .then(function(user) {
       console.log("User Created!"); // Move the console.log here
       res.send(user);
