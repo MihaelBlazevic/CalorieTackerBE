@@ -3,22 +3,22 @@ const Schema = mongoose.Schema;
 
 //Create user schema and model
 const userSchema = new Schema({
-    name:{
+    name: {
         type: String,
-        required:[true, 'Name is required!'],
+        required: [true, 'Name is required!'],
     },
-    surname:{
+    surname: {
         type: String,
-        required:[true, 'Surname is required!'],
+        required: [true, 'Surname is required!'],
     },
-    email:{
+    email: {
         type: String,
-        required:[true, 'Email is required!'],
+        required: [true, 'Email is required!'],
         unique: [true, 'Duplicate email']
     },
-    password:{
+    password: {
         type: String,
-        required:[true, 'Password is required!']
+        required: [true, 'Password is required!']
     },
 });
 const User = mongoose.model('user', userSchema);

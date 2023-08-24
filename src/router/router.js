@@ -1,22 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../templates/user');
+const Food = require('../../models/Food');
+const ingredients = require('../data/ingredients');
 
-router.post('/register', function(req, res, next) {
-  const { name,surname,email, password } = req.body;
+router.post('/register', function (req, res, next) {
+  const { name, surname, email, password } = req.body;
 
-router.post('/login', async (req, res) => {
+  router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-  
+
     try {
       const user = await User.findOne({ email, password }).exec();
-  
+
       if (!user) {
         return res.status(401).json({ message: 'Invalid email or password' });
       }
-      
+
       // If the user exists and the credentials are correct, return the user details
-      return res.status(200).json({ message: `SUCCESSFULLY LOGGED IN, ${user.username}!!!`})
+      return res.status(200).json({ message: `SUCCESSFULLY LOGGED IN, ${user.username}!!!` })
       ret
     } catch (error) {
       console.error(error);
@@ -29,8 +31,8 @@ router.post('/login', async (req, res) => {
     return res.status(400).json({ message: 'Email and password are required' });
   }
 
-  User.create({ name,surname,email, password })
-    .then(function(user) {
+  User.create({ name, surname, email, password })
+    .then(function (user) {
       console.log("User Created!"); // Move the console.log here
       res.send(user);
     })
