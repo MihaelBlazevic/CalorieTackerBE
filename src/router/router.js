@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../templates/user');
-const Food = require('../../models/Food');
 const ingredients = require('../data/ingredients');
 
 router.post('/register', function (req, res, next) {
