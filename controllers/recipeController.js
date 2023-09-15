@@ -8,7 +8,8 @@ exports.getRecipes = async (req, res) => {
 exports.createRecipe = async (req, res) => {
     const newRecipe = {
         name: req.body.name,
-        ingredients: req.body.ingredients
+        ingredients: req.body.ingredients,
+        totalKcal: req.body.totalKcal
     }
 
     const recipe = await Recipe.create(newRecipe)

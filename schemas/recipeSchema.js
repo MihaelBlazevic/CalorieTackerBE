@@ -11,6 +11,10 @@ const recipeSchema = new mongoose.Schema({
       ref: 'Ingredient',
     }
   ],
+  totalKcal : {
+    type: Number,
+    required: true,
+  }
 })
 
 recipeSchema.pre(/^find/, function (next) {
