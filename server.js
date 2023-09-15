@@ -7,7 +7,7 @@ let conn = mongoose.connect(
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        dbName: 'calorietracker'
+        dbName: 'calorie_tracker'
     }
 )
 
