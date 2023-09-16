@@ -16,3 +16,18 @@ exports.createRecipe = async (req, res) => {
 
     res.status(201).json(recipe)
 }
+exports.deleteRecipe = async (req, res) => {
+    console.log("Delete request received for ID:", req.params.id);
+    try {
+        await Recipe.findByIdAndDelete(req.params._id);
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message
+        });
+    }
+}
