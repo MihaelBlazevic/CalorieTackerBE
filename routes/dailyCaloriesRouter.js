@@ -4,8 +4,10 @@ const dailyCaloriesController = require('../controllers/dailyCaloriesController'
 
 const router = express.Router();
 
-router.route('/')
+router.route('/:id')
     .get(authController.authorize, dailyCaloriesController.getDailyCalories)
+
+router.route('/')
     .post(authController.authorize, dailyCaloriesController.createDailyCalories)
 
 module.exports = router

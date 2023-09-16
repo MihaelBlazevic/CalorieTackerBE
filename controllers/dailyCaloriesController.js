@@ -11,9 +11,8 @@ exports.getDailyCalories = async (req, res) => {
             $gte: start,
             $lt: end
         },
-        user: req.body.user
+        user: req.params.id
     })
-
     res.status(200).json(dailyCalories)
 }
 
@@ -43,7 +42,7 @@ exports.createDailyCalories = async (req, res) => {
         res.status(201).json(dailyCalories)
     } else {
         dailyCalories['recipes'].push(req.body.recipes)
-        dailyCalories['dailyCalories'] += req.body.dailyCalories
+        dailyCalories['dailyCalories']+= req.body.dailyCalories
         await DailyCalories.replaceOne({ _id: dailyCalories._id }, dailyCalories)
 
         const updatedDailyCalories = await DailyCalories.findOne({
