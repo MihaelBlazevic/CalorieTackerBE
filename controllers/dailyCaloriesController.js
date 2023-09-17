@@ -13,7 +13,14 @@ exports.getDailyCalories = async (req, res) => {
         },
         user: req.params.id
     })
-    res.status(200).json(dailyCalories)
+    if (!dailyCalories) {
+        return res.status(200).json({
+            message: "No DailyCalories data found for the user today.",
+            data: {}
+        });
+    }
+    res.status(200).json(dailyCalories);
+    
 }
 
 exports.createDailyCalories = async (req, res) => {
